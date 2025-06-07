@@ -1,0 +1,48 @@
+
+@import "tailwindcss";
+.custom-nav-btn {
+ 
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.swiper-button-prev.custom-nav-btn {
+  left: 10px;
+}
+
+.swiper-button-next.custom-nav-btn {
+  right: 10px;
+}
+
+/* Add arrow icons using pseudo-elements or background images */
+.swiper-button-prev.custom-nav-btn::after,
+.swiper-button-next.custom-nav-btn::after {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.swiper-button-prev.custom-nav-btn::after {
+  content: '←'; /* Or use any icon/font you prefer */
+}
+
+.swiper-button-next.custom-nav-btn::after {
+  content: '→';
+}
+
+.ram{
+position: sticky;
+top: 0;
+z-index: 1000; /* big enough so it stays on top */
+width: 100%;
+}
