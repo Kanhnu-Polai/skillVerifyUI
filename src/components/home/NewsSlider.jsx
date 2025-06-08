@@ -8,10 +8,10 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 const NewsSlider = ({ newsList }) => {
-  console.log("NewsSlider received newsList:", newsList);
+  
 
   useEffect(() => {
-    console.log("Received in NewsSlider:", newsList);
+  
   }, [newsList]);
 
   if (!Array.isArray(newsList) || newsList.length === 0) {

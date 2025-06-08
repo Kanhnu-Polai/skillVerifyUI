@@ -1,29 +1,21 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isLoginModalOpen:false
+  isForgotPasswordModalOpen: false,
 };
 
-const modalSlice = createSlice(
-   {
-     name:'modal',
-    initialState,
-    reducers:{
-
-        openLoginModal:(state)=>{
-            state.isLoginModalOpen = true;
-        },
-
-        closeLoginModal:( state)=>{
-            state.isLoginModalOpen = false;
-        },
-
-
+const modalSlice = createSlice({
+  name: "modal",
+  initialState,
+  reducers: {
+    openForgotPasswordModal: (state) => {
+      state.isForgotPasswordModalOpen = true;
     },
-   }
+    closeForgotPasswordModal: (state) => {
+      state.isForgotPasswordModalOpen = false;
+    },
+  },
+});
 
-);
-
-export const{openLoginModal , closeLoginModal} = modalSlice.actions;
-export default modalSlice.reducer
+export const { openForgotPasswordModal, closeForgotPasswordModal } = modalSlice.actions;
+export default modalSlice.reducer;

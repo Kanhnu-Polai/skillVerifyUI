@@ -12,11 +12,13 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import HelpIcon from '@mui/icons-material/Help';
+import ArticleIcon from '@mui/icons-material/Article';
+import SourceIcon from '@mui/icons-material/Source';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
-export default function AccountMenu({ handleLogout }) {
+export default function JobPosterMenu({ handleLogout }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate(); // For navigation
@@ -92,32 +94,34 @@ export default function AccountMenu({ handleLogout }) {
           Profile
         </MenuItem>
         <MenuItem onClick={() => { handleClose(); navigate('/account'); }}>
-          My Applications
+          My Job Listings
         </MenuItem>
         <Divider />
+       
         <MenuItem onClick={() => { handleClose(); navigate('/add-account'); }}>
           <ListItemIcon>
-            <CollectionsBookmarkIcon fontSize="small" />
+            <SourceIcon fontSize="small" />
           </ListItemIcon>
-          Saved Jobs
+          View Applicants
         </MenuItem>
+
         <MenuItem onClick={() => { handleClose(); navigate('/add-account'); }}>
           <ListItemIcon>
-            <DescriptionIcon fontSize="small" />
+            <BarChartIcon fontSize="small" />
           </ListItemIcon>
-         Resume Manager
+          Job Analytics
         </MenuItem>
-        <MenuItem onClick={() => { handleClose(); navigate('/settings'); }} >
+        <MenuItem onClick={() => { handleClose(); navigate('/settings'); }}>
           <ListItemIcon>
-            <Settings fontSize="small"  />
+            <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={() => { handleClose(); handleLogout(); }}>
+        <MenuItem onClick={() => { handleClose(); navigate('/settings'); }}>
           <ListItemIcon>
-            < SupportAgentIcon fontSize="small" />
+            <HelpIcon fontSize="small" />
           </ListItemIcon>
-         Help & Support 
+          Help & Support
         </MenuItem>
         <MenuItem onClick={() => { handleClose(); handleLogout(); }}>
           <ListItemIcon>

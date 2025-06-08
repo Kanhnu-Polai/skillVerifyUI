@@ -2,14 +2,20 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/slices/authSlice';
-import { openLoginModal } from '../../redux/slices/modalSlice';
 import SearchBar from '../../utils/search/SearchBar';
 import AccountMenu from '../profile/AccountMenu';
+import Admin from '../profile/Admin';
+import JobPosterMenu from '../profile/JobPosterMenu';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const role = useSelector((state)=>state.auth.user?.role
+)
+
+console.log(role)
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -38,26 +44,33 @@ const Navbar = () => {
           <div className="flex justify-center gap-4 text-gray-700">
             <NavLink to="/jobs" className="hover:text-blue-600 font-medium">Jobs</NavLink>
             <NavLink to="/trending" className="hover:text-blue-600 font-medium">Trending</NavLink>
+            {
+              isAuthenticated && role==='[JOB_POSTER]'?(
+                <NavLink to='/create_job'>Create A JOB</NavLink>
+              ):null
+            }
           </div>
 
           {isAuthenticated ? (
             <div className="flex justify-center items-center gap-2">
-              <AccountMenu handleLogout={handleLogout} />
+              {role === '[ADMIN]' && <Admin handleLogout={handleLogout} ></Admin> }
+              {role === '[JOB_POSTER]' && <JobPosterMenu handleLogout={handleLogout} ></JobPosterMenu>}
+              {role === '[JOB_SEEKER]' && <AccountMenu handleLogout={handleLogout} ></AccountMenu>}
             </div>
           ) : (
             <div className="flex justify-center gap-2 mt-2 md:mt-0">
-              <button
-                className="px-4 py-2 border rounded text-sm hover:bg-gray-100"
-                onClick={() => dispatch(openLoginModal())}
-              >
-                Login
-              </button>
-              <button
-                className="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700"
-                onClick={() => navigate('/register')}
-              >
-                Register
-              </button>
+             <NavLink
+  to="/login" // or the route you want to go to
+  className="bg-blue-600 text-white py-2 px-4 rounded-md text-center w-full block text-sm hover:bg-blue-700 transition"
+>
+  Login
+</NavLink>
+              <NavLink
+  to="/signup"
+  className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-center min-w-22 block text-sm transition"
+>
+  Sign Up
+</NavLink>
             </div>
           )}
         </div>

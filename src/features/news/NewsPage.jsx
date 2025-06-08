@@ -6,12 +6,12 @@ const NewsPage = () => {
    const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    console.log("Calling getAllNews()...");
+   
 
     const fetchNews = async () => {
       try {
         const data = await NewsService.getAllNews(); // ✅ this is response.data
-        console.log("Raw response:", data); // ✅ this is what you returned from NewsService
+      
         setArticles(data); // ✅ directly set articles from data
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -22,7 +22,7 @@ const NewsPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Fetched News articles:", articles); // ✅ logs final result
+   
   }, [articles]);
 
 
