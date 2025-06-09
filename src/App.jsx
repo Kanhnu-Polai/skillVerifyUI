@@ -9,6 +9,9 @@ import ForgotPasswordModal from './utils/login/ForgotPassword';
 import { useDispatch } from 'react-redux';
 import React, {  useEffect} from 'react';
 import { login } from './redux/slices/authSlice';
+import { Toaster } from "react-hot-toast";
+import Signup from './components/auth/SIgnUp';
+import ProfilePage from './components/protected/ProfilePage';
 
 
 
@@ -34,6 +37,8 @@ const App = () => {
   
   return (
     <>
+     <Toaster position="top-center" />
+     
       <Navbar />
 
       {
@@ -47,6 +52,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/login' element = {<LoginModal></LoginModal>}></Route>
+        <Route path='/signup' element = {<Signup></Signup>}></Route>
+        <Route path='/profile' element = {<ProfilePage></ProfilePage>}></Route>
         {/* Add other routes here */}
       </Routes>
 

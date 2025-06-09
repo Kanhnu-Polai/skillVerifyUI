@@ -6,7 +6,6 @@ import { login } from "../../redux/slices/authSlice";
 import LoginService from "./loginService";
 import { FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import CheckIcon from "@mui/icons-material/Check";
 import Slogan from "../../utils/login/Slogan";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
@@ -30,6 +29,7 @@ function LoginModal() {
 
     try {
       const userData = await LoginService.login(email, password);
+      
       localStorage.setItem("token", userData.token);
       localStorage.setItem(
         "user",
@@ -57,7 +57,7 @@ function LoginModal() {
       );
       console.log("Login successful! Token:", userData.token);
 
-      dispatch(closeLoginModal());
+     
       navigate("/");
     } catch (err) {
       setError(err.message); // Use the specific error message from LoginService
@@ -148,7 +148,7 @@ function LoginModal() {
 
         <div>
           <p className="text-white text-sm">
-            Don't have an account? <a href="">Sign up</a>
+            Don't have an account? <a href="/signup">Sign up</a>
           </p>
         </div>
         <div className="flex items-center w-96 my-6">
